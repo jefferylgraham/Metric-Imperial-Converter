@@ -30,9 +30,17 @@ function ConvertHandler() {
   };
   
   this.getUnit = function(input) {
-    var result;
-    
-    return result;
+    var units = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
+    var firstChar = input.match('[a-zA-Z]');
+    var index = input.indexOf(firstChar);
+
+    var unit = input.substring(index);
+    if (units.includes(unit)) {
+      return unit;
+    }
+    else {
+      return 'invalid unit';
+    }
   };
   
   this.getReturnUnit = function(initUnit) {

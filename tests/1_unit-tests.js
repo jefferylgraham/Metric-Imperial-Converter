@@ -57,16 +57,15 @@ suite('Unit Tests', function(){
   suite('Function convertHandler.getUnit(input)', function() {
     
     test('For Each Valid Unit Inputs', function(done) {
-      var input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
-      input.forEach(function(ele) {
-        //assert
-      });
+      var input = '3.2L';
+      assert.equal(convertHandler.getUnit(input), 'L');
       done();
     });
     
     test('Unknown Unit Input', function(done) {
-      
-      //done();
+      var input = '3.2s';
+      assert.equal(convertHandler.getUnit(input), 'invalid unit');
+      done();
     });  
     
   });
@@ -130,3 +129,5 @@ suite('Unit Tests', function(){
   });
 
 });
+
+
