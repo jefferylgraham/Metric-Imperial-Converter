@@ -21,7 +21,7 @@ function ConvertHandler() {
         return 'invalid number';
       }
       else {
-        return number;
+        return eval(number);
       }
     }
     else {
@@ -44,24 +44,56 @@ function ConvertHandler() {
   };
   
   this.getReturnUnit = function(initUnit) {
-    var result;
+    var conversions = {
+      gal: "l",
+      l: "gal",
+      mi: "km",
+      km: "mi",
+      lbs: "kg",
+      kg: "lbs"
+    };
     
-    return result;
+    return (conversions[initUnit.toLowerCase()]);
   };
 
   this.spellOutUnit = function(unit) {
-    var result;
+    var fullUnit = {
+      gal: "gallon",
+      l: "liter",
+      mi: "mile",
+      km: "kilometer",
+      lbs: "pounds",
+      kg: "kilograms"
+    };
     
-    return result;
+    return (fullUnit[unit.toLowerCase()]);
   };
   
   this.convert = function(initNum, initUnit) {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-    var result;
+    switch(initUnit.toLowerCase()) {
+      case "gal":
+        return initNum * galToL;
+        break;
+      case "l":
+        return initNum / galToL;
+        break;
+      case "lbs":
+        return initNum * lbsToKg;
+        break;
+      case "kg":
+        return initNum / lbsToKg;
+        break;
+      case "mi":
+        return initNum * miToKm;
+        break;
+      case "km":
+        return initNum / miToKm;
+        break;
+    }
     
-    return result;
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
