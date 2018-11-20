@@ -47,7 +47,7 @@ suite('Unit Tests', function(){
     });
     
     test('No Numerical Input', function(done) {
-      var input = '';
+      var input = 'kg';
       assert.equal(convertHandler.getNum(input), 1);
       done();
     }); 
@@ -87,7 +87,7 @@ suite('Unit Tests', function(){
     test('For Each Valid Unit Inputs', function(done) {
       //see above example for hint
       var input = "gal";
-      assert.equal(convertHandler.spellOutUnit(input), "gallon");
+      assert.equal(convertHandler.spellOutUnit(input), "gallons");
       done();
     });
     

@@ -9,11 +9,16 @@
 function ConvertHandler() {
   
   this.getNum = function(input) {
-    if (input) {
+  
       var firstChar = input.match('[a-zA-Z]');
       var index = input.indexOf(firstChar);
 
       var number = input.substring(0, index);
+    
+      if (number == '') {
+        number = 1;
+        return number;
+      }
 
       var re = /\//ig;
       var found = (number.match(/\//g) || []).length;
@@ -23,10 +28,7 @@ function ConvertHandler() {
       else {
         return eval(number);
       }
-    }
-    else {
-      return 1;
-    }
+    
   };
   
   this.getUnit = function(input) {
@@ -58,10 +60,10 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     var fullUnit = {
-      gal: "gallon",
-      l: "liter",
-      mi: "mile",
-      km: "kilometer",
+      gal: "gallons",
+      l: "liters",
+      mi: "miles",
+      km: "kilometers",
       lbs: "pounds",
       kg: "kilograms"
     };
@@ -96,10 +98,8 @@ function ConvertHandler() {
     
   };
   
-  this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    var result;
-    
-    return result;
+  this.getString = function(initNum, initUnit, returnNum, returnUnit) {    
+    return `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}` 
   };
   
 }
